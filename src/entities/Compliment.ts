@@ -1,6 +1,6 @@
 
 
-import {Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, PrimaryColumn} from "typeorm";
+import {Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn} from "typeorm";
 import { v4 as uuid } from "uuid"
 import { Tag } from "./Tag";
 import { User } from "./User";
@@ -14,21 +14,21 @@ class Compliment {
   user_sender: string;
 
   @JoinColumn({name: "user_sender"})
-  @ManyToMany(() => User)
+  @ManyToOne(() => User)
   userSender: User
 
   @Column()
   user_receiver: string;
 
   @JoinColumn({name: "user_receiver"})
-  @ManyToMany(() => User)
+  @ManyToOne(() => User)
   userReceiver: User
 
   @Column()
   tag_id: string;
 
   @JoinColumn({name: "tag_id"})
-  @ManyToMany(() => Tag)
+  @ManyToOne(() => Tag)
   tag: Tag;
 
   @Column()
